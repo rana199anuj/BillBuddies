@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Users, Receipt, MessageCircle, ArrowRight, Zap, Shield, Smartphone } from 'lucide-react';
+import { Users, Receipt, MessageCircle, ArrowRight, Zap, Shield } from 'lucide-react';
 
 const features = [
   {
@@ -19,7 +19,7 @@ const features = [
   {
     icon: <MessageCircle size={28} />,
     title: 'WhatsApp Reminders',
-    desc: 'One tap sends a polite payment reminder directly on WhatsApp. No API key needed.',
+    desc: 'One tap sends a polite payment reminder directly on WhatsApp.',
     color: '#43E97B',
   },
   {
@@ -33,12 +33,6 @@ const features = [
     title: 'Secure & Private',
     desc: 'Passwords are bcrypt-hashed. Your data lives on MongoDB Atlas with auth protection.',
     color: '#6C63FF',
-  },
-  {
-    icon: <Smartphone size={28} />,
-    title: 'Mobile Ready',
-    desc: 'Fully responsive design, works beautifully on any screen size.',
-    color: '#FF6584',
   },
 ];
 
@@ -73,18 +67,36 @@ export default function LandingPage() {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <Link href="/login" className="btn-secondary" style={{ padding: '8px 20px' }}>Login</Link>
-          <Link href="/register" className="btn-primary" style={{ padding: '8px 20px' }}>Sign Up Free</Link>
+          <Link href="/login" style={{
+            padding: '10px 24px', 
+            color: 'white', 
+            fontWeight: 600, 
+            fontSize: '15px', 
+            borderRadius: '12px', 
+            border: '1px solid rgba(255,255,255,0.2)', 
+            background: 'rgba(255,255,255,0.05)',
+            transition: 'all 0.2s',
+          }}>
+            Login
+          </Link>
+          <Link href="/register" style={{
+            padding: '10px 24px', 
+            color: 'white', 
+            fontWeight: 600, 
+            fontSize: '15px', 
+            borderRadius: '12px', 
+            background: 'linear-gradient(135deg, #6C63FF 0%, #FF6584 100%)',
+            boxShadow: '0 8px 20px -6px rgba(108, 99, 255, 0.5)',
+            border: 'none',
+            transition: 'transform 0.2s, box-shadow 0.2s',
+          }}>
+            Sign Up Free
+          </Link>
         </motion.div>
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center text-center px-6 pt-24 pb-16">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="badge" style={{ background: 'rgba(108,99,255,0.15)', color: '#6C63FF', border: '1px solid rgba(108,99,255,0.3)', marginBottom: 20, display: 'inline-flex' }}>
-            ✨ Free & No API Keys Required
-          </span>
-        </motion.div>
+      <section className="relative z-10 flex flex-col items-center text-center px-6 pt-24 pb-40">
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -194,7 +206,7 @@ export default function LandingPage() {
             Ready to settle up?
           </h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: 32, fontSize: 17 }}>
-            Join BillBuddies for free. No credit card, no API keys.
+            Join BillBuddies for free. No credit card required.
           </p>
           <Link href="/register" className="btn-primary" style={{ fontSize: 17, padding: '14px 40px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             Create Free Account <ArrowRight size={18} />
