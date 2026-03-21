@@ -5,7 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, MessageCircle, Receipt, ArrowRight, UserCheck } from 'lucide-react';
-import { calculateSettlements, Settlement, getMemberBalances } from '@/lib/calculations';
+import { calculateSettlements, Settlement } from '@/lib/calculations';
 
 interface Member { id: string; name: string; whatsapp: string }
 interface Trip { _id: string; name: string; description: string; members: Member[] }
