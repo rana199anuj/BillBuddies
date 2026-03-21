@@ -203,7 +203,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer style={{ borderTop: '1px solid rgba(108,99,255,0.1)', padding: '24px', textAlign: 'center', color: 'var(--text-secondary)', fontSize: 14 }}>
-        © {new Date().getFullYear()} BillBuddies — Split smarter, travel together.
+        © {new Date().getFullYear()} BillBuddies — Split smarter, travel together. | Made by <strong style={{ color: 'white' }}>Anuj Rana</strong>
       </footer>
     </div>
   );

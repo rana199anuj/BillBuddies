@@ -67,10 +67,9 @@ export default function DashboardPage() {
             </div>
             <div>
               <div style={{ fontWeight: 600, fontSize: 14, color: 'white' }}>{session?.user?.name}</div>
-              <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>{session?.user?.email}</div>
             </div>
           </div>
-          <button onClick={() => signOut({ callbackUrl: '/login' })} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '8px 12px', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}>
+          <button onClick={() => signOut({ callbackUrl: '/' })} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '8px 12px', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}>
             <LogOut size={14} /> Logout
           </button>
         </div>
