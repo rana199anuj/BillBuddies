@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Users, Receipt, MessageCircle, ArrowRight, Zap, Shield } from 'lucide-react';
+import { signIn } from 'next-auth/react';
 
 const features = [
   {
@@ -67,19 +68,7 @@ export default function LandingPage() {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <Link href="/login" style={{
-            padding: '10px 24px', 
-            color: 'white', 
-            fontWeight: 600, 
-            fontSize: '15px', 
-            borderRadius: '12px', 
-            border: '1px solid rgba(255,255,255,0.2)', 
-            background: 'rgba(255,255,255,0.05)',
-            transition: 'all 0.2s',
-          }}>
-            Login
-          </Link>
-          <Link href="/register" style={{
+          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} style={{
             padding: '10px 24px', 
             color: 'white', 
             fontWeight: 600, 
@@ -88,10 +77,11 @@ export default function LandingPage() {
             background: 'linear-gradient(135deg, #6C63FF 0%, #FF6584 100%)',
             boxShadow: '0 8px 20px -6px rgba(108, 99, 255, 0.5)',
             border: 'none',
+            cursor: 'pointer',
             transition: 'transform 0.2s, box-shadow 0.2s',
           }}>
-            Sign Up Free
-          </Link>
+            Start Now
+          </button>
         </motion.div>
       </nav>
 
@@ -122,12 +112,9 @@ export default function LandingPage() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="flex gap-4 flex-wrap justify-center"
         >
-          <Link href="/register" className="btn-primary" style={{ fontSize: 17, padding: '14px 32px', display: 'flex', alignItems: 'center', gap: 8 }}>
-            Get Started Free <ArrowRight size={18} />
-          </Link>
-          <Link href="/login" className="btn-secondary" style={{ fontSize: 17, padding: '14px 32px' }}>
-            I have an account
-          </Link>
+          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} className="btn-primary" style={{ fontSize: 17, padding: '14px 32px', display: 'flex', border: 'none', cursor: 'pointer', alignItems: 'center', gap: 8 }}>
+            Get Started <ArrowRight size={18} />
+          </button>
         </motion.div>
 
         {/* Floating expense cards */}
@@ -208,9 +195,9 @@ export default function LandingPage() {
           <p style={{ color: 'var(--text-secondary)', marginBottom: 32, fontSize: 17 }}>
             Join BillBuddies for free. No credit card required.
           </p>
-          <Link href="/register" className="btn-primary" style={{ fontSize: 17, padding: '14px 40px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            Create Free Account <ArrowRight size={18} />
-          </Link>
+          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} className="btn-primary" style={{ fontSize: 17, border: 'none', cursor: 'pointer', padding: '14px 40px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            Start Using BillBuddies <ArrowRight size={18} />
+          </button>
         </motion.div>
       </section>
 

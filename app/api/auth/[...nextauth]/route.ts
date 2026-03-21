@@ -11,11 +11,24 @@ const handler = NextAuth({
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
+        isGuest: { label: 'Guest', type: 'text' },
       },
       async authorize(credentials) {
+        await connectDB();
+        
+        // Handle anonymous Guest Login
+        if (credentials?.isGuest === 'true') {
+          const randomNum = Math.floor(Math.random() * 1000000);
+          const guestUser = await User.create({
+            name: 'Guest User',
+            email: `guest-${randomNum}@billbuddies.app`,
+            password: await bcrypt.hash(`guest-pass-${randomNum}`, 10),
+          });
+          return { id: guestUser._id.toString(), name: guestUser.name, email: guestUser.email };
+        }
+
         if (!credentials?.email || !credentials?.password) return null;
 
-        await connectDB();
         const user = await User.findOne({ email: credentials.email.toLowerCase() });
         if (!user) return null;
 
