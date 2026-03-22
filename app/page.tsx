@@ -1,153 +1,247 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Users, Receipt, MessageCircle, ArrowRight, Zap, Shield } from 'lucide-react';
-import { signIn } from 'next-auth/react';
 
 const features = [
   {
-    icon: <Users size={28} />,
+    icon: <Users size={26} />,
     title: 'Group Trips',
-    desc: 'Create trip groups, add friends with their WhatsApp numbers, and manage who is in.',
-    color: '#6C63FF',
+    desc: "Create trip groups, add friends, and manage who's in.",
+    color: '#a78bfa',
   },
   {
-    icon: <Receipt size={28} />,
+    icon: <Receipt size={26} />,
     title: 'Smart Splitting',
-    desc: 'Add expenses, pick who paid, and split among any subset. Equal or custom splits.',
-    color: '#FF6584',
+    desc: 'Add expenses and split equally or with custom amounts.',
+    color: '#f472b6',
   },
   {
-    icon: <MessageCircle size={28} />,
+    icon: <MessageCircle size={26} />,
     title: 'WhatsApp Reminders',
-    desc: 'One tap sends a polite payment reminder directly on WhatsApp.',
-    color: '#43E97B',
+    desc: 'One tap sends a polite payment reminder on WhatsApp.',
+    color: '#34d399',
   },
   {
-    icon: <Zap size={28} />,
+    icon: <Zap size={26} />,
     title: 'Instant Calculation',
-    desc: 'Our debt-simplification engine minimizes the number of transactions to settle.',
-    color: '#FFBB38',
+    desc: 'Debt-simplification engine minimizes total transactions.',
+    color: '#fbbf24',
   },
   {
-    icon: <Shield size={28} />,
+    icon: <Shield size={26} />,
     title: 'Secure & Private',
-    desc: 'Passwords are bcrypt-hashed. Your data lives on MongoDB Atlas with auth protection.',
-    color: '#6C63FF',
+    desc: 'Passwords are bcrypt-hashed, data lives on MongoDB Atlas.',
+    color: '#60a5fa',
   },
 ];
 
-const floatingCards = [
-  { label: 'Grocery Run', amount: '₹1,200', paidBy: 'Rahul', color: '#6C63FF' },
-  { label: 'Hotel Room', amount: '₹8,500', paidBy: 'Priya', color: '#FF6584' },
-  { label: 'Cab to Airport', amount: '₹650', paidBy: 'You', color: '#43E97B' },
-];
-
+// Replaced SVG with image
 export default function LandingPage() {
   return (
-    <div className="animated-bg min-h-screen relative overflow-hidden">
-      {/* Orbs */}
-      <div className="orb" style={{ width: 500, height: 500, background: '#6C63FF', top: -100, left: -150, animationDelay: '0s' }} />
-      <div className="orb" style={{ width: 400, height: 400, background: '#FF6584', bottom: -100, right: -100, animationDelay: '3s' }} />
-      <div className="orb" style={{ width: 300, height: 300, background: '#43E97B', top: '40%', left: '50%', animationDelay: '6s' }} />
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #1e0a3c 0%, #2d1b69 30%, #4a2080 60%, #3b0764 100%)',
+      fontFamily: "'Inter', sans-serif",
+      color: 'white',
+      overflowX: 'hidden',
+      position: 'relative',
+    }}>
 
-      {/* Navbar */}
-      <nav className="navbar px-6 py-4 flex items-center justify-between">
+      {/* Subtle top-left orange accent (like reference) */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: 180, height: 8,
+        background: 'linear-gradient(90deg, #f97316, #fb923c)',
+        borderRadius: '0 0 8px 0',
+        zIndex: 10,
+      }} />
+
+      {/* Background decorative circles */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 500, height: 500, borderRadius: '50%', background: 'rgba(109,40,217,0.12)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: 400, height: 400, borderRadius: '50%', background: 'rgba(76,29,149,0.2)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+
+      {/* ── NAVBAR ── */}
+      <nav style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '20px 60px',
+        position: 'relative',
+        zIndex: 10,
+      }}>
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2"
+          style={{ display: 'flex', alignItems: 'center', gap: 10 }}
         >
-          <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg,#6C63FF,#FF6584)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Receipt size={20} color="white" />
+          <div style={{ width: 38, height: 38, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Receipt size={20} color="#4c1d95" />
           </div>
           <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, color: 'white' }}>BillBuddies</span>
         </motion.div>
+
+        {/* Nav Links */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 40 }}
+        >
+          <Link href="/" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none', fontWeight: 500, fontSize: 15 }}>Home</Link>
+          <Link href="#features" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontWeight: 500, fontSize: 15 }}>Features</Link>
+          <Link href="#about" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontWeight: 500, fontSize: 15 }}>About</Link>
+        </motion.div>
+
+        {/* Auth buttons */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3"
+          style={{ display: 'flex', alignItems: 'center', gap: 12 }}
         >
-          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} style={{
-            padding: '10px 24px', 
-            color: 'white', 
-            fontWeight: 600, 
-            fontSize: '15px', 
-            borderRadius: '12px', 
-            background: 'linear-gradient(135deg, #6C63FF 0%, #FF6584 100%)',
-            boxShadow: '0 8px 20px -6px rgba(108, 99, 255, 0.5)',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'transform 0.2s, box-shadow 0.2s',
-          }}>
-            Start Now
-          </button>
+          <Link href="/login" style={{
+            color: 'rgba(255,255,255,0.8)',
+            fontWeight: 600,
+            fontSize: 15,
+            textDecoration: 'none',
+            padding: '9px 20px',
+            borderRadius: 8,
+            border: '1px solid rgba(255,255,255,0.2)',
+            transition: 'all 0.2s',
+          }}>Login</Link>
+          <Link href="/register" style={{
+            color: '#1e0a3c',
+            fontWeight: 700,
+            fontSize: 15,
+            textDecoration: 'none',
+            padding: '9px 22px',
+            borderRadius: 8,
+            background: 'white',
+            transition: 'all 0.2s',
+          }}>Sign Up</Link>
         </motion.div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center text-center px-6 pt-24 pb-40">
+      {/* ── HERO ── */}
+      <section style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '60px 60px 80px',
+        minHeight: '80vh',
+        position: 'relative',
+        zIndex: 5,
+        gap: 40,
+      }}>
+        {/* Left: Text */}
+        <div style={{ flex: '0 0 auto', maxWidth: 520 }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{
+              fontFamily: 'Outfit, sans-serif',
+              fontSize: 'clamp(40px, 5vw, 68px)',
+              fontWeight: 900,
+              lineHeight: 1.1,
+              marginBottom: 20,
+              color: 'white',
+            }}
+          >
+            Split Bills,<br />
+            <span style={{ color: '#c4b5fd' }}>Not Friendships</span>
+          </motion.h1>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(40px, 7vw, 80px)', fontWeight: 900, lineHeight: 1.1, marginBottom: 24, maxWidth: 800 }}
-        >
-          Split Bills, <span className="gradient-text">Not Friendships</span>
-        </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            style={{
+              fontSize: 17,
+              color: 'rgba(255,255,255,0.65)',
+              lineHeight: 1.75,
+              marginBottom: 40,
+              maxWidth: 440,
+            }}
+          >
+            Track group expenses, calculate who owes what, and send WhatsApp payment reminders — all in one place.
+          </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          style={{ fontSize: 20, color: 'var(--text-secondary)', maxWidth: 560, lineHeight: 1.7, marginBottom: 40 }}
-        >
-          Track group expenses, calculate who owes what, and send WhatsApp payment reminders — all in one place.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex gap-4 flex-wrap justify-center"
-        >
-          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} className="btn-primary" style={{ fontSize: 17, padding: '14px 32px', display: 'flex', border: 'none', cursor: 'pointer', alignItems: 'center', gap: 8 }}>
-            Get Started <ArrowRight size={18} />
-          </button>
-        </motion.div>
-
-        {/* Floating expense cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5 }}
-          className="flex gap-4 flex-wrap justify-center mt-16"
-        >
-          {floatingCards.map((card, i) => (
-            <motion.div
-              key={i}
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 3 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.5 }}
-              className="glass-card"
-              style={{ padding: '18px 24px', minWidth: 180, textAlign: 'left' }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.28 }}
+            style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}
+          >
+            <Link
+              href="/register"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '14px 32px',
+                background: 'white',
+                color: '#4c1d95',
+                fontWeight: 700,
+                fontSize: 16,
+                borderRadius: 10,
+                textDecoration: 'none',
+                transition: 'all 0.25s',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+              }}
             >
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: card.color, marginBottom: 10 }} />
-              <div style={{ fontWeight: 700, fontSize: 18, color: 'white', marginBottom: 4 }}>{card.amount}</div>
-              <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 4 }}>{card.label}</div>
-              <div style={{ fontSize: 12, color: card.color }}>Paid by {card.paidBy}</div>
-            </motion.div>
-          ))}
+              Try Now
+            </Link>
+            <Link
+              href="/login"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '14px 32px',
+                background: 'transparent',
+                color: 'white',
+                fontWeight: 700,
+                fontSize: 16,
+                borderRadius: 10,
+                textDecoration: 'none',
+                border: '2px solid rgba(255,255,255,0.35)',
+                transition: 'all 0.25s',
+              }}
+            >
+              Get Now <ArrowRight size={16} />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Right: Cartoon Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, x: 30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1.0, ease: 'easeOut' }}
+          style={{ flex: '0 0 auto', width: '45%', maxWidth: 520, display: 'flex', justifyContent: 'center' }}
+        >
+          <img 
+            src="/cartoon-friends.png" 
+            alt="Friends splitting travel bills" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              filter: 'drop-shadow(0 25px 35px rgba(0,0,0,0.3))'
+            }} 
+          />
         </motion.div>
       </section>
 
-      {/* Features */}
-      <section className="relative z-10 px-6 py-20 max-w-6xl mx-auto">
+      {/* ── FEATURES ── */}
+      <section id="features" style={{ padding: '60px 60px 80px', position: 'relative', zIndex: 5 }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ fontFamily: 'Outfit, sans-serif', fontSize: 42, fontWeight: 800, textAlign: 'center', marginBottom: 16 }}
+          style={{ fontFamily: 'Outfit, sans-serif', fontSize: 38, fontWeight: 800, textAlign: 'center', marginBottom: 12 }}
         >
           Everything you need
         </motion.h2>
@@ -155,11 +249,12 @@ export default function LandingPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 60, fontSize: 17 }}
+          style={{ color: 'rgba(255,255,255,0.55)', textAlign: 'center', marginBottom: 52, fontSize: 16 }}
         >
           Powerful features, zero complexity.
         </motion.p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, maxWidth: 1100, margin: '0 auto' }}>
           {features.map((f, i) => (
             <motion.div
               key={i}
@@ -167,43 +262,72 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass-card card-hover"
-              style={{ padding: 28 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              style={{
+                padding: '28px 24px',
+                background: 'rgba(255,255,255,0.05)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 18,
+                cursor: 'default',
+              }}
             >
-              <div style={{ width: 56, height: 56, borderRadius: 16, background: `${f.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: f.color, marginBottom: 18 }}>
+              <div style={{ width: 52, height: 52, borderRadius: 14, background: `${f.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: f.color, marginBottom: 18 }}>
                 {f.icon}
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color: 'white' }}>{f.title}</h3>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: 14 }}>{f.desc}</p>
+              <h3 style={{ fontWeight: 700, fontSize: 17, marginBottom: 8, color: 'white' }}>{f.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, fontSize: 14 }}>{f.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative z-10 px-6 py-20 text-center">
+      {/* ── CTA ── */}
+      <section style={{ padding: '40px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 5 }}>
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="glass-card"
-          style={{ maxWidth: 700, margin: '0 auto', padding: '60px 40px' }}
+          style={{
+            maxWidth: 660,
+            margin: '0 auto',
+            padding: '56px 40px',
+            background: 'rgba(255,255,255,0.06)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderRadius: 24,
+          }}
         >
-          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 40, fontWeight: 800, marginBottom: 16 }}>
+          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 38, fontWeight: 800, marginBottom: 14 }}>
             Ready to settle up?
           </h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: 32, fontSize: 17 }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 32, fontSize: 16 }}>
             Join BillBuddies for free. No credit card required.
           </p>
-          <button onClick={() => signIn('credentials', { isGuest: 'true', callbackUrl: '/dashboard' })} className="btn-primary" style={{ fontSize: 17, border: 'none', cursor: 'pointer', padding: '14px 40px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <Link
+            href="/register"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '14px 40px',
+              background: 'white',
+              color: '#4c1d95',
+              fontWeight: 700,
+              fontSize: 16,
+              borderRadius: 10,
+              textDecoration: 'none',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+            }}
+          >
             Start Using BillBuddies <ArrowRight size={18} />
-          </button>
+          </Link>
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ borderTop: '1px solid rgba(108,99,255,0.1)', padding: '24px', textAlign: 'center', color: 'var(--text-secondary)', fontSize: 14 }}>
-        © {new Date().getFullYear()} BillBuddies — Split smarter, travel together. | Made by <strong style={{ color: 'white' }}>Anuj Rana</strong>
+      {/* ── FOOTER ── */}
+      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '24px 60px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: 14 }}>
+        © {new Date().getFullYear()} BillBuddies — Split smarter, travel together. | Made by <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Anuj Rana</strong>
       </footer>
     </div>
   );

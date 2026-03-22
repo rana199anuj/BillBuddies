@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 body {
@@ -34,6 +35,7 @@ body {
   background: var(--bg-dark);
   color: var(--text-primary);
   min-height: 100vh;
+  width: 100%;
   overflow-x: hidden;
 }
 
