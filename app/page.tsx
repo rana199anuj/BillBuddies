@@ -48,7 +48,35 @@ export default function LandingPage() {
       overflowX: 'hidden',
       position: 'relative',
     }}>
+      <style>{`
+        .responsive-nav { padding: 20px 60px; }
+        .nav-links-container { display: flex; }
+        .hero-section { flex-direction: row; padding: 60px 60px 80px; }
+        .hero-text-container { display: flex; flex-direction: column; align-items: flex-start; max-width: 520px; text-align: left; }
+        .hero-buttons { justify-content: flex-start; }
+        .hero-image-container { width: 45%; max-width: 520px; }
+        .features-section { padding: 60px 60px 80px; }
+        .cta-section { padding: 40px 60px 80px; }
+        .footer-section { padding: 24px 60px; }
 
+        @media (max-width: 768px) {
+          .responsive-nav { padding: 15px 20px; }
+          .nav-links-container { display: none !important; }
+          .hero-section { flex-direction: column; padding: 30px 20px 60px; gap: 40px !important; }
+          .hero-text-container { max-width: 100%; align-items: center; text-align: center; }
+          .hero-buttons { justify-content: center; }
+          .hero-image-container { width: 90%; max-width: 400px; margin: 0 auto; }
+          .features-section { padding: 40px 20px; }
+          .cta-section { padding: 40px 20px; }
+          .footer-section { padding: 24px 20px; }
+        }
+        @media (max-width: 480px) {
+          .hero-title { font-size: 42px !important; }
+          .hero-buttons { flex-direction: column; width: 100%; gap: 12px !important; }
+          .hero-buttons > * { width: 100%; justify-content: center; }
+        }
+      `}</style>
+      
       {/* Subtle top-left orange accent (like reference) */}
       <div style={{
         position: 'absolute',
@@ -64,11 +92,10 @@ export default function LandingPage() {
       <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: 400, height: 400, borderRadius: '50%', background: 'rgba(76,29,149,0.2)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
       {/* ── NAVBAR ── */}
-      <nav style={{
+      <nav className="responsive-nav" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '20px 60px',
         position: 'relative',
         zIndex: 10,
       }}>
@@ -78,17 +105,16 @@ export default function LandingPage() {
           animate={{ opacity: 1, x: 0 }}
           style={{ display: 'flex', alignItems: 'center', gap: 10 }}
         >
-          <div style={{ width: 38, height: 38, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Receipt size={20} color="#4c1d95" />
-          </div>
+          <img src="/logo.png" alt="BillBuddies Logo" style={{ width: 38, height: 38, borderRadius: 10, objectFit: 'cover' }} />
           <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, color: 'white' }}>BillBuddies</span>
         </motion.div>
 
         {/* Nav Links */}
         <motion.div
+          className="nav-links-container"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ display: 'flex', alignItems: 'center', gap: 40 }}
+          style={{ alignItems: 'center', gap: 40 }}
         >
           <Link href="/" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none', fontWeight: 500, fontSize: 15 }}>Home</Link>
           <Link href="#features" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontWeight: 500, fontSize: 15 }}>Features</Link>
@@ -125,19 +151,19 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{
+      <section className="hero-section" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '60px 60px 80px',
         minHeight: '80vh',
         position: 'relative',
         zIndex: 5,
         gap: 40,
       }}>
         {/* Left: Text */}
-        <div style={{ flex: '0 0 auto', maxWidth: 520 }}>
+        <div className="hero-text-container" style={{ flex: '0 0 auto' }}>
           <motion.h1
+            className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -170,6 +196,7 @@ export default function LandingPage() {
           </motion.p>
 
           <motion.div
+            className="hero-buttons"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28 }}
@@ -218,10 +245,11 @@ export default function LandingPage() {
 
         {/* Right: Cartoon Image */}
         <motion.div
+          className="hero-image-container"
           initial={{ opacity: 0, scale: 0.8, x: 30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.0, ease: 'easeOut' }}
-          style={{ flex: '0 0 auto', width: '45%', maxWidth: 520, display: 'flex', justifyContent: 'center' }}
+          style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'center' }}
         >
           <img 
             src="/cartoon-friends.png" 
@@ -236,7 +264,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FEATURES ── */}
-      <section id="features" style={{ padding: '60px 60px 80px', position: 'relative', zIndex: 5 }}>
+      <section id="features" className="features-section" style={{ position: 'relative', zIndex: 5 }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -283,7 +311,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: '40px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 5 }}>
+      <section className="cta-section" style={{ textAlign: 'center', position: 'relative', zIndex: 5 }}>
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -326,7 +354,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '24px 60px', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: 14 }}>
+      <footer className="footer-section" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: 14 }}>
         © {new Date().getFullYear()} BillBuddies — Split smarter, travel together. | Made by <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Anuj Rana</strong>
       </footer>
     </div>

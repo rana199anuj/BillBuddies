@@ -125,11 +125,9 @@ body {
   background: rgba(108,99,255,0.05);
 }
 
-/* Animated gradient background */
+/* Gradient background to match home page exactly */
 .animated-bg {
-  background: linear-gradient(-45deg, #0A0B1E, #12132E, #0D0E2A, #0A1628);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: linear-gradient(135deg, #1e0a3c 0%, #2d1b69 30%, #4a2080 60%, #3b0764 100%);
 }
 
 @keyframes gradientShift {

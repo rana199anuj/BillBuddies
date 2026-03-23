@@ -55,9 +55,7 @@ export default function DashboardPage() {
       {/* Navbar */}
       <nav className="navbar" style={{ padding: '16px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-          <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg,#6C63FF,#FF6584)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Receipt size={18} color="white" />
-          </div>
+          <img src="/logo.png" alt="BillBuddies Logo" style={{ width: 36, height: 36, borderRadius: 10, objectFit: 'cover', boxShadow: '0 2px 8px rgba(108,99,255,0.3)' }} />
           <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: 'white' }}>BillBuddies</span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>

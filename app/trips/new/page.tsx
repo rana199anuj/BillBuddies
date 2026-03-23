@@ -58,9 +58,7 @@ export default function NewTripPage() {
           <ArrowLeft size={20} />
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg,#6C63FF,#FF6584)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Receipt size={16} color="white" />
-          </div>
+          <img src="/logo.png" alt="BillBuddies Logo" style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'cover', boxShadow: '0 2px 8px rgba(108,99,255,0.3)' }} />
           <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: 'white' }}>BillBuddies</span>
         </div>
       </nav>

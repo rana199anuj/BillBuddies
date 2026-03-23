@@ -42,9 +42,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <div style={{ width: 44, height: 44, background: 'linear-gradient(135deg,#6C63FF,#FF6584)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Receipt size={22} color="white" />
-            </div>
+            <img src="/logo.png" alt="BillBuddies Logo" style={{ width: 44, height: 44, borderRadius: 14, objectFit: 'cover', boxShadow: '0 4px 12px rgba(108,99,255,0.3)' }} />
             <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 24, color: 'white' }}>BillBuddies</span>
           </Link>
           <p style={{ color: 'var(--text-secondary)', marginTop: 8, fontSize: 15 }}>Welcome back! Sign in to continue.</p>
