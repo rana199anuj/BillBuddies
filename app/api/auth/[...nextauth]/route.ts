@@ -1,11 +1,16 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
 import connectDB from '@/lib/mongodb';
 import User from '@/models/User';
 
 const handler = NextAuth({
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -44,8 +49,34 @@ const handler = NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) token.id = user.id;
+    async signIn({ user, account, profile }) {
+      if (account?.provider === 'google') {
+        await connectDB();
+        const existingUser = await User.findOne({ email: user.email });
+        if (!existingUser) {
+          // Generate a purely random fallback password for Google OAuth users to satisfy schema
+          const randomPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+          await User.create({
+            name: user.name,
+            email: user.email,
+            password: await bcrypt.hash(randomPassword, 10),
+          });
+        }
+        return true;
+      }
+      return true; // Credentials provider
+    },
+    async jwt({ token, user, account }) {
+      if (account && user) {
+        if (account.provider === 'google') {
+          await connectDB();
+          const dbUser = await User.findOne({ email: user.email });
+          if (dbUser) token.id = dbUser._id.toString();
+        } else {
+          // Credentials provider
+          token.id = user.id;
+        }
+      }
       return token;
     },
     async session({ session, token }) {

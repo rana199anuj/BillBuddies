@@ -7,6 +7,7 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://billbuddies.vercel.app'),
   title: 'BillBuddies — Split Expenses with Friends',
   description: 'Easily split travel and group expenses with friends. Calculate who owes what and send WhatsApp reminders instantly.',
   keywords: ['split bills', 'expense tracker', 'friends expenses', 'travel bill splitter', 'whatsapp payment reminder', 'group expenses'],
