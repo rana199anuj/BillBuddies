@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Update this with your actual live domain url!
-  const baseUrl = 'https://billbuddies.vercel.app';
+  const baseUrl = 'https://billbuddies.online';
   
   return [
     {

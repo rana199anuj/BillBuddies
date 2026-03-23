@@ -7,14 +7,14 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://billbuddies.vercel.app'),
+  metadataBase: new URL('https://billbuddies.online'),
   title: 'BillBuddies — Split Expenses with Friends',
   description: 'Easily split travel and group expenses with friends. Calculate who owes what and send WhatsApp reminders instantly.',
   keywords: ['split bills', 'expense tracker', 'friends expenses', 'travel bill splitter', 'whatsapp payment reminder', 'group expenses'],
   openGraph: {
     title: 'BillBuddies — Settle up fast!',
     description: 'Track group expenses, calculate who owes what, and send WhatsApp payment reminders automatically.',
-    url: 'https://billbuddies.vercel.app', // Update with actual domain
+    url: 'https://billbuddies.online',
     siteName: 'BillBuddies',
     images: [
       {
