@@ -1,54 +1,53 @@
-# 💸 BillBuddies – Split Expenses with Friends Easily
+<!-- 🔥 PREMIUM HEADER -->
+<h1 align="center">💸 BillBuddies</h1>
 
-BillBuddies is a simple and fast web app to **split expenses with friends**, track balances, and send payment reminders — all in one place.
+<p align="center">
+  <b>Split Expenses • Track Balances • Settle Faster</b>
+</p>
 
-🌐 Live Demo: https://billbuddies.online
-
----
-
-## 🚀 Features
-
-- 💰 **Split Expenses Instantly**
-  - Equal split
-  - Custom split
-- 📊 **Track Who Owes Whom**
-- 🔔 **Send Payment Reminders (WhatsApp / Manual)**
-- 👥 **Group Expense Management**
-- ⚡ **Fast & Simple UI**
-- 📱 **Mobile Friendly Design**
+<p align="center">
+  <a href="https://billbuddies.online">
+    <img src="https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=vercel">
+  </a>
+  <img src="https://img.shields.io/badge/Status-Active-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Made%20With-❤️-red?style=for-the-badge">
+</p>
 
 ---
 
-## 🛠️ Tech Stack
-
-| Frontend        | Backend        | Database     | DevOps        |
-|-----------------|--------------|--------------|--------------|
-| React / Next.js | Node.js / API | MongoDB      | AWS / Linux  |
-| Tailwind CSS    | Express       |              | CI/CD (GitHub Actions) |
+<!-- 🔥 ANIMATION -->
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?color=00F7FF&center=true&vCenter=true&size=22&lines=Split+Expenses+with+Friends;Track+Who+Owes+Whom;Send+Payment+Reminders;Fast+%2B+Simple+%2B+Smart+🚀">
+</p>
 
 ---
 
-## 📸 Screenshots
+## 🚀 About BillBuddies
 
-| Dashboard | Split Expense | 
-|----------|--------------|--------|
-| ![Dashboard](./public/Screenshot 2026-03-24 184015.png) | ![Split](./public/image.png) |
+**BillBuddies** is a modern web app that helps you **split expenses with friends**, track balances, and manage group spending effortlessly.
+
+No more confusion. No more calculations. Just simple and smart expense tracking.
+
+🌐 **Live App:** https://billbuddies.online  
+
+---
+
+## ✨ Key Features
+
+- 💰 Smart Expense Splitting (Equal & Custom)
+- 📊 Real-Time Balance Calculation
+- 👥 Group Expense Management
+- 🔔 Payment Reminders (Manual / WhatsApp Ready)
+- ⚡ Clean & Fast UI
+- 📱 Fully Responsive Design
+
 ---
 
 ## 🧠 How It Works
 
-1. Create a group or add friends  
-2. Add expenses (who paid, amount, split type)  
-3. BillBuddies calculates balances automatically  
-4. See who owes whom instantly  
-5. Send reminders to settle payments  
-
----
-
-## 📦 Getting Started
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/rana199anuj/BillBuddies.git
-cd BillBuddies
+```mermaid
+graph TD;
+A[Create Group] --> B[Add Expenses];
+B --> C[Split Automatically];
+C --> D[Track Balances];
+D --> E[Send Reminders];
