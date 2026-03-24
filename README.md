@@ -42,6 +42,15 @@ No more confusion. No more calculations. Just simple and smart expense tracking.
 - 📱 Fully Responsive Design
 
 ---
+##🛠️ Tech Stack
+
+<p align="center"> <img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,mongodb,aws,linux,git,github,tailwind" /> </p>
+
+---
+
+##📸 Screenshots
+
+<p align="center"> <img src="./public/image.png" width="30%" /> <img src="./public/Screenshot 2026-03-24 184015.png" width="30%" />  </p>
 
 ## 🧠 How It Works
 
