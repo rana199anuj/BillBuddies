@@ -44,7 +44,7 @@ No more confusion. No more calculations. Just simple and smart expense tracking.
 ---
 ##🛠️ Tech Stack
 
-<p align="center"> <img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,mongodb,aws,linux,git,github,tailwind" /> </p>
+<p align="center"> <img src="https://skillicons.dev/icons?i=react,nodejs,mongodb,aws,linux,git,github," /> </p>
 
 ---
 
