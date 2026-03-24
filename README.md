@@ -30,10 +30,9 @@ BillBuddies is a simple and fast web app to **split expenses with friends**, tra
 
 ## 📸 Screenshots
 
-| Dashboard | Split Expense | Summary |
+| Dashboard | Split Expense | 
 |----------|--------------|--------|
-| ![Dashboard](./public/dashboard.png) | ![Split](./public/split.png) | ![Summary](./public/summary.png) |
-
+| ![Dashboard](./public/Screenshot 2026-03-24 184015.png) | ![Split](./public/image.png) |
 ---
 
 ## 🧠 How It Works
